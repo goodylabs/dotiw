@@ -77,6 +77,7 @@ module ActionView
 
           time_measurements.each do |measure, key|
             name = options[:singularize] == :always || hash[key].between?(-1, 1) ? key.singularize : key
+	    output += [I18n.t( 'datetime.distance_in_words.x_' + key, :count => hash[key], :default => "#{ hash[key] } #{name}")] 
             output += ["#{hash[key]} #{name}"]
           end
 
